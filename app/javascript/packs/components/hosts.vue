@@ -133,7 +133,7 @@ export default {
 			const id = airbnbID.hostID;
 
 			axios
-				.get(`http://localhost:3000/hosts/${id}`)
+				.get(`http://localhost:3000/hosts/fetch_host/${id}`)
 				.then((resp) => resp.data[0]['user'])
 				.then((data) =>
 					axios.post('http://localhost:3000/hosts/', {
@@ -148,7 +148,7 @@ export default {
 				.then((resp) => {
 					if (resp.statusText === 'OK') {
 						this.addListings(resp.data.host_id, resp.data.id);
-						console.log(resp);
+						console.log("DATA ID", resp.data.id);
 						this.close();
 						this.initialize();
 					} else {
@@ -161,6 +161,7 @@ export default {
 			console.log(hostId);
 			const listingArr = [];
 			const rentals = await axios.get(`http://localhost:3000/hosts/fetch_host/${hostId}`);
+			console.log('dbID', dbID)
 			console.log(rentals.data);
 			for (const el of rentals.data) {
 				listingArr.push({
@@ -174,7 +175,14 @@ export default {
 					zipcode: el.zipcode,
 					host_id: dbID,
 				});
-			axios.post(`http://localhost:3000/hosts/${dbID}/listings`, listingArr).catch(error)
+				try {
+					const response = await axios.post(`http://localhost:3000/hosts/${dbID}/listings`, listingArr)
+					console.log("Listing Array: ", listingArr.length)
+					console.log(response.data)
+				} catch(error) {
+					console.error(error)
+				}
+
 			}
 		},
 	},

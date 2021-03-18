@@ -11,6 +11,8 @@ class CreateListings < ActiveRecord::Migration[6.1]
       t.string :zipcode
       t.belongs_to :host, null: false, foreign_key: true
 
+      t.index :airbnb_id, unique: true
+      t.index [:name, :zipcode], unique: true
     end
   end
 end

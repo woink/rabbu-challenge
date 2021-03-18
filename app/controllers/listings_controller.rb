@@ -9,8 +9,8 @@ class ListingsController < ApplicationController
   end
 
   def create
-    @listings = Listing.upsert_all(listing_params)
-    render json: @listings
+    @listing = Listing.insert_all(listing_params)
+    render json: @listing
   end
 
   def show
@@ -50,9 +50,15 @@ class ListingsController < ApplicationController
     hash['listings']
   end
 
+  # def listing_params
+  #   puts params
+  #   params.require(:_json).map do |param|
+  #     param.permit(:host_id, :airbnb_id, :name, :bedrooms, :beds, :person_capcity, :city, :state, :zipcode).to_h
+  #   end
+  # end
+
   def listing_params
-    params.require(:_json).map do |param|
-      param.permit(:host_id, :airbnb_id, :name, :bedrooms, :beds, :person_capcity, :city, :state, :zipcode).to_h
-    end
+    params.require(:_json).map { |params| params.permit(:airbnb_id, :name, :bedrooms, :beds, :person_capcity, :city, :state, :zipcode, :host_id) }
   end
+
 end

@@ -33,7 +33,9 @@ ActiveRecord::Schema.define(version: 2021_03_17_011411) do
     t.string "state"
     t.string "zipcode"
     t.integer "host_id", null: false
+    t.index ["airbnb_id"], name: "index_listings_on_airbnb_id", unique: true
     t.index ["host_id"], name: "index_listings_on_host_id"
+    t.index ["name", "zipcode"], name: "index_listings_on_name_and_zipcode", unique: true
   end
 
   add_foreign_key "listings", "hosts"
