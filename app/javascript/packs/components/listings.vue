@@ -85,7 +85,7 @@ export default {
 
 		async initialize() {
 			try {
-				const response = await axios.get('http://localhost:3000/listings');
+				const response = await axios.get('https://stark-meadow-63240.herokuapp.com/listings');
 				this.listings = response.data;
 			} catch (error) {
 				console.error(error);

@@ -49,7 +49,7 @@ export default {
 			const events = [];
 			try {
 				const response = await axios.get(
-					`http://localhost:3000/listings/${this.$route.params.id}/fetch_calendars/${this.$route.params.airbnbID}`
+					`https://stark-meadow-63240.herokuapp.com/listings/${this.$route.params.id}/fetch_calendars/${this.$route.params.airbnbID}`
 				);
 				const months  = response.data;
 				for (const month of months) {

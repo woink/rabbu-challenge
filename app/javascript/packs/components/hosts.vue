@@ -108,7 +108,7 @@ export default {
 
 		async initialize() {
 			try {
-				const response = await axios.get('http://localhost:3000/hosts');
+				const response = await axios.get('https://stark-meadow-63240.herokuapp.com/hosts');
 				console.log(response.data);
 				this.hosts = response.data;
 			} catch (error) {
@@ -128,7 +128,7 @@ export default {
 			const id = airbnbID.hostID;
 
 			axios
-				.get(`http://localhost:3000/hosts/fetch_host/${id}`)
+				.get(`https://stark-meadow-63240.herokuapp.com/hosts/fetch_host/${id}`)
 				.then((resp) => resp.data[0]['user'])
 				.then((data) =>
 					axios.post('http://localhost:3000/hosts/', {
@@ -155,7 +155,7 @@ export default {
 		async addListings(hostId, dbID) {
 			console.log(hostId);
 			const listingArr = [];
-			const rentals = await axios.get(`http://localhost:3000/hosts/fetch_host/${hostId}`);
+			const rentals = await axios.get(`https://stark-meadow-63240.herokuapp.com/fetch_host/${hostId}`);
 			console.log('dbID', dbID)
 			console.log(rentals.data);
 			for (const el of rentals.data) {
@@ -171,7 +171,7 @@ export default {
 					host_id: dbID,
 				});
 				try {
-					const response = await axios.post(`http://localhost:3000/hosts/${dbID}/listings`, listingArr)
+					const response = await axios.post(`https://stark-meadow-63240.herokuapp.com/${dbID}/listings`, listingArr)
 					console.log("Listing Array: ", listingArr.length)
 					console.log(response.data)
 				} catch(error) {
