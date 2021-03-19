@@ -12,8 +12,6 @@ import hosts from './packs/components/hosts.vue';
 import listings from './packs/components/listings.vue';
 import listingShow from './packs/components/listingShow.vue'
 
-
-
 export default {
 	data: function() {
 		return {
@@ -21,9 +19,9 @@ export default {
 		};
 	},
 	components: {
-		hosts: hosts,
-		listings: listings,
-		listingShow: listingShow
+		hosts,
+		listings,
+		listingShow
 	},
 };
 </script>
