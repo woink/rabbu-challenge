@@ -1,6 +1,6 @@
 <template>
 	<div>
-    <h1>Hello</h1>
+		<h5>{{ listingTitle }}</h5>
 		<v-sheet tile height="54" class="d-flex">
 			<v-btn
 				icon
@@ -39,28 +39,27 @@ export default {
 		events: [],
 		pageCount: 0,
 		names: ['Booked'],
+		props: ['listingTitle'],
 	}),
 	methods: {
+		setTitle(title) {
+			this.listingTitle = title;
+		},
 		async getEvents() {
 			const events = [];
-      console.log(this.$route.params)
-
 			try {
 				const response = await axios.get(
 					`http://localhost:3000/listings/${this.$route.params.id}/fetch_calendars/${this.$route.params.airbnbID}`
 				);
-				console.log(response.data);
-				const months = response.data;
+				const months  = response.data;
 				for (const month of months) {
-					const allDay = this.rnd(0, 3) === 0;
 					const daysArr = month.days;
 					for (let i = 0; i < daysArr.length; i++) {
 						if (daysArr[i].available === false)
 							events.push({
 								name: 'Booked',
 								start: daysArr[i].calendarDate,
-								end: daysArr[i].calendarDate,
-								timed: allDay,
+								allDay: true,
 							});
 					}
 				}
@@ -68,9 +67,6 @@ export default {
 				console.error(error);
 			}
 			this.events = events;
-		},
-		rnd(a, b) {
-			return Math.floor((b - a + 1) * Math.random()) + a;
 		},
 	},
 };
