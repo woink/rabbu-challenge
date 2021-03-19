@@ -15,7 +15,6 @@ import listingShow from './packs/components/listingShow.vue'
 
 export default {
 	data: function() {
-		console.log($this.$props)
 		return {
 			message: 'Airbnb Scrapper',
 			title: ''
