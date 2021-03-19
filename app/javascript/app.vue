@@ -2,6 +2,7 @@
 	<div id="app">
 		<v-app>
 			<p>{{ message }}</p>
+			<h5>{{title}}</h5>
 			<router-view></router-view>
 		</v-app>
 	</div>
@@ -14,8 +15,10 @@ import listingShow from './packs/components/listingShow.vue'
 
 export default {
 	data: function() {
+		console.log($this.$props)
 		return {
 			message: 'Airbnb Scrapper',
+			title: ''
 		};
 	},
 	components: {
@@ -23,6 +26,11 @@ export default {
 		listings,
 		listingShow
 	},
+	methods: {
+		updateTitle(title) {
+			this.title = title
+		}
+	}
 };
 </script>
 
