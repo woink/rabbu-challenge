@@ -131,7 +131,7 @@ export default {
 				.get(`https://stark-meadow-63240.herokuapp.com/hosts/fetch_host/${id}`)
 				.then((resp) => resp.data[0]['user'])
 				.then((data) =>
-					axios.post('http://localhost:3000/hosts/', {
+					axios.post('https://stark-meadow-63240.herokuapp.com/hosts/', {
 						host_id: id,
 						first_name: data.first_name,
 						resp_rate: data.response_rate,
