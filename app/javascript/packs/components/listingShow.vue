@@ -43,16 +43,12 @@ export default {
 	methods: {
 		async getEvents() {
 			const events = [];
-      console.log(this.$route.params)
-
 			try {
 				const response = await axios.get(
 					`http://localhost:3000/listings/${this.$route.params.id}/fetch_calendars/${this.$route.params.airbnbID}`
 				);
-				console.log(response.data);
-				const months = response.data;
+				const months  = response.data;
 				for (const month of months) {
-					const allDay = this.rnd(0, 3) === 0;
 					const daysArr = month.days;
 					for (let i = 0; i < daysArr.length; i++) {
 						if (daysArr[i].available === false)

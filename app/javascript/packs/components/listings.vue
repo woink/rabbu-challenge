@@ -21,7 +21,6 @@
 <script>
 import axios from 'axios';
 
-
 export default {
   name: 'AllListings',
 	data: () => ({
@@ -79,26 +78,11 @@ export default {
 		async initialize() {
 			try {
 				const response = await axios.get('http://localhost:3000/listings');
-				console.log(response.data);
 				this.listings = response.data;
 			} catch (error) {
 				console.error(error);
 			}
 		},
-		},
-
-		async addNewHost(airbnbID) {
-			try {
-				const response = await axios.get(
-					`https://api.airbnb.com/v2/listings?key=d306zoyjsyarp7ifhu67rjxn52tv0t20&user_id=${airbnbID.hostID}`,
-					{
-						headers: { 'Access-Control-Allow-Origin': '*' },
-					}
-				);
-				console.log('airbnbID: ', response.data);
-			} catch (error) {
-				console.error('oh now', error);
-			}
-		},
+	},
 };
 </script>
