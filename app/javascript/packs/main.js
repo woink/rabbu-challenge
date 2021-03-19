@@ -6,7 +6,6 @@ import router from './router'
 
 Vue.use(Vuetify)
 
-
 document.addEventListener('DOMContentLoaded', () => {
   const app = new Vue({
     vuetify: new Vuetify(),

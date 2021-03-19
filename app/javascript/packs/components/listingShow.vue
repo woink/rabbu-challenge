@@ -25,9 +25,7 @@
 				@change="getEvents"
 			></v-calendar>
 		</v-sheet>
-
 	</div>
- 
 </template>
 
 <script>
@@ -35,7 +33,6 @@ import axios from 'axios';
 
 export default {
 	name: 'ListingShow',
-  props: ['name'],
 	data: () => ({
 		type: 'month',
 		value: '',
