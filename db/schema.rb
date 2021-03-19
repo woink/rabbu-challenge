@@ -12,6 +12,9 @@
 
 ActiveRecord::Schema.define(version: 2021_03_17_011411) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "hosts", force: :cascade do |t|
     t.integer "host_id"
     t.string "first_name"
@@ -32,7 +35,7 @@ ActiveRecord::Schema.define(version: 2021_03_17_011411) do
     t.string "city"
     t.string "state"
     t.string "zipcode"
-    t.integer "host_id", null: false
+    t.bigint "host_id", null: false
     t.index ["airbnb_id"], name: "index_listings_on_airbnb_id", unique: true
     t.index ["host_id"], name: "index_listings_on_host_id"
     t.index ["name", "zipcode"], name: "index_listings_on_name_and_zipcode", unique: true
