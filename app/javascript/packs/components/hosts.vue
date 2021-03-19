@@ -4,7 +4,6 @@
 		:items="hosts"
 		sort-by="name"
 		class="elevation-1"
-		@click:row="handleHostClick"
 	>
 		<template v-slot:top>
 			<v-toolbar flat color="white">
@@ -103,10 +102,6 @@ export default {
 		this.initialize();
 	},
 	methods: {
-		handleHostClick(item) {
-			this.$router.push(`/hosts/${item.id}/listings`);
-		},
-
 		handleListingsClick() {
 			this.$router.push('/listings');
 		},
