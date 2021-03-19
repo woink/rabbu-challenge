@@ -59,8 +59,7 @@ export default {
 							events.push({
 								name: 'Booked',
 								start: daysArr[i].calendarDate,
-								end: daysArr[i].calendarDate,
-								timed: allDay,
+								allDay: true,
 							});
 					}
 				}
@@ -68,9 +67,6 @@ export default {
 				console.error(error);
 			}
 			this.events = events;
-		},
-		rnd(a, b) {
-			return Math.floor((b - a + 1) * Math.random()) + a;
 		},
 	},
 };
