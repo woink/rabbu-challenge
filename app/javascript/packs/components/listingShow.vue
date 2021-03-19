@@ -1,6 +1,6 @@
 <template>
 	<div>
-    <h1>Hello</h1>
+		<h5>{{ listingTitle }}</h5>
 		<v-sheet tile height="54" class="d-flex">
 			<v-btn
 				icon
@@ -39,8 +39,12 @@ export default {
 		events: [],
 		pageCount: 0,
 		names: ['Booked'],
+		props: ['listingTitle'],
 	}),
 	methods: {
+		setTitle(title) {
+			this.listingTitle = title;
+		},
 		async getEvents() {
 			const events = [];
 			try {
