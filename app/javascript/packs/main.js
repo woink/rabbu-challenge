@@ -18,3 +18,5 @@ document.addEventListener('DOMContentLoaded', () => {
   
   console.log(app)
 })
+
+export const baseURL = process.env.DEV_URL || 'https://stark-meadow-63240.herokuapp.com'
