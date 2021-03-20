@@ -4,6 +4,8 @@ import 'vuetify/dist/vuetify.min.css'
 import App from '../app.vue'
 import router from './router'
 
+
+
 Vue.use(Vuetify)
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -13,6 +15,6 @@ document.addEventListener('DOMContentLoaded', () => {
     render: h => h(App),
   }).$mount()
   document.body.appendChild(app.$el)
-
+  
   console.log(app)
 })
