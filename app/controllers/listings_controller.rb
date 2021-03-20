@@ -22,8 +22,6 @@ class ListingsController < ApplicationController
     render json: fetch_calendars
   end
 
- 
-
   def fetch_calendars
     url = URI("https://www.airbnb.com/api/v3/PdpAvailabilityCalendar?operationName=PdpAvailabilityCalendar&locale=en&currency=USD&variables={\"request\":{\"count\":3,\"listingId\":\"#{params[:airbnb_id]}\",\"month\":3,\"year\":2021}}&extensions={\"persistedQuery\":{\"version\":1,\"sha256Hash\":\"dc360510dba53b5e2a32c7172d10cf31347d3c92263f40b38df331f0b363ec41\"}}&_cb=nn3r3413fkljy&key=d306zoyjsyarp7ifhu67rjxn52tv0t20")
 

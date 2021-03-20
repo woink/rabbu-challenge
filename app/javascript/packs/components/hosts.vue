@@ -109,7 +109,6 @@ export default {
 		async initialize() {
 			try {
 				const response = await axios.get('https://stark-meadow-63240.herokuapp.com/hosts');
-				console.log(response.data);
 				this.hosts = response.data;
 			} catch (error) {
 				console.error(error);
@@ -143,7 +142,6 @@ export default {
 				.then((resp) => {
 					if (resp.statusText === 'OK') {
 						this.addListings(resp.data.host_id, resp.data.id);
-						console.log("DATA ID", resp.data.id);
 						this.close();
 						this.initialize();
 					} else {
@@ -153,11 +151,8 @@ export default {
 		},
 
 		async addListings(hostId, dbID) {
-			console.log(hostId);
 			const listingArr = [];
 			const rentals = await axios.get(`https://stark-meadow-63240.herokuapp.com/hosts/fetch_host/${hostId}`);
-			console.log('dbID', dbID)
-			console.log(rentals.data);
 			for (const el of rentals.data) {
 				listingArr.push({
 					airbnb_id: el.id,
@@ -172,12 +167,10 @@ export default {
 				});
 				try {
 					const response = await axios.post(`https://stark-meadow-63240.herokuapp.com/hosts/${dbID}/listings`, listingArr)
-					console.log("Listing Array: ", listingArr.length)
 					console.log(response.data)
 				} catch(error) {
 					console.error(error)
 				}
-
 			}
 		},
 	},
